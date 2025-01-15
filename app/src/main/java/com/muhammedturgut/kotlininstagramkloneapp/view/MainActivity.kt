@@ -1,19 +1,13 @@
-package com.muhammedturgut.kotlininstagramkloneapp
+package com.muhammedturgut.kotlininstagramkloneapp.view
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
-import com.google.firebase.auth.ktx.auth
 import com.muhammedturgut.kotlininstagramkloneapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         //güncel kullanıcı
         val currentUser=auth.currentUser
         if(currentUser!= null){
-            val intent=Intent(this@MainActivity,FeedActivity::class.java)
+            val intent=Intent(this@MainActivity, FeedActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -42,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         if(email.isNotEmpty() && passwor.isNotEmpty()){
            auth.signInWithEmailAndPassword(email,passwor).addOnSuccessListener{
 
-           val intent=Intent(this@MainActivity,FeedActivity::class.java)
+           val intent=Intent(this@MainActivity, FeedActivity::class.java)
                startActivity(intent)
                finish()
            }.addOnFailureListener{
@@ -59,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         if(email.isNotEmpty() && passwor.isNotEmpty()){
        auth.createUserWithEmailAndPassword(email,passwor)
            .addOnCompleteListener{
-              val intent=Intent(this@MainActivity,FeedActivity::class.java )
+              val intent=Intent(this@MainActivity, FeedActivity::class.java )
                startActivity(intent)
                finish()
 
